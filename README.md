@@ -5,7 +5,28 @@
 
 Please feel free to use this.
 
-How to use:
+Include in your projects:
+
+### How to use it?
+
+STEP 1:
+
+Gradle
+-------
+
+```
+repositories {
+    jcenter()
+}
+dependencies {
+    compile 'com.github.aryarohit07:glide-facedetection-transformation:0.1'
+}
+```
+
+STEP 2:
+
+Set glide transform
+-------
 
 ```java
 Glide.with(yourFragment)
