@@ -6,7 +6,6 @@
 ### How to use it?
 
 STEP 1:
-
 Gradle
 -------
 
@@ -20,7 +19,6 @@ dependencies {
 ```
 
 STEP 2:
-
 Set glide transform
 -------
 
@@ -30,6 +28,10 @@ Glide.with(yourFragment)
     .transform(new CenterFaceCrop(context))
     .into(yourView);
 ```
+
+That's it! It will do the rest.
+
+**Note:** If no face is detected, it will fallback to CENTER CROP.
 
 License
 -------
