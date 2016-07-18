@@ -10,7 +10,7 @@ How to use:
 ```java
 Glide.with(yourFragment)
     .load(yourUrl)
-    .transform(new MyTransformation(context))
+    .transform(new CenterFaceCrop(context))
     .into(yourView);
 ```
 
