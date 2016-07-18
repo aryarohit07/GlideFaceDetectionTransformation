@@ -3,10 +3,6 @@
 
 ### An Android image transformation library providing cropping above Face Detection for [Glide](https://github.com/bumptech/glide)
 
-Please feel free to use this.
-
-Include in your projects:
-
 ### How to use it?
 
 STEP 1:
