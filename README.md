@@ -14,7 +14,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'com.github.aryarohit07:glide-facedetection-transformation:0.1'
+    compile 'com.github.aryarohit07:glide-facedetection-transformation:0.1@aar'
 }
 ```
 
