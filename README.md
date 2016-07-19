@@ -33,6 +33,13 @@ That's it! It will do the rest.
 
 **Note:** If no face is detected, it will fallback to CENTER CROP.
 
+Library dependencies:
+------
+```java
+com.google.android.gms:play-services-vision:9.2.1
+com.github.bumptech.glide:glide:3.7.0
+```
+
 License
 -------
 
