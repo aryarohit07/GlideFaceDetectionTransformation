@@ -6,7 +6,6 @@
 ### How to use it?
 
 STEP 1:
-
 Gradle
 -------
 
@@ -49,7 +48,6 @@ GlideFaceDetector.releaseDetector();
 ```
 
 **Note:** If no face is detected, it will fallback to CENTER CROP.
-
 
 Library dependencies:
 ------
