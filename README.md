@@ -15,11 +15,19 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'com.github.aryarohit07:glide-facedetection-transformation:0.1'
+    compile 'com.github.aryarohit07:glide-facedetection-transformation:0.2'
 }
 ```
 
 STEP 2:
+
+Initialize the detector
+
+```java
+GlideFaceDetector.initialize(context);
+```
+
+STEP 3:
 
 Set glide transform
 -------
@@ -27,8 +35,27 @@ Set glide transform
 ```java
 Glide.with(yourFragment)
     .load(yourUrl)
-    .transform(new CenterFaceCrop(context))
+    .transform(new CenterFaceCrop())
     .into(yourView);
+```
+
+
+STEP 4:
+
+Release the detector when you are done with the detector. (May be in ```onDestory()``` method)
+
+```java
+GlideFaceDetector.releaseDetector();
+```
+
+**Note:** If no face is detected, it will fallback to CENTER CROP.
+
+
+Library dependencies:
+------
+```java
+com.google.android.gms:play-services-vision:9.2.1
+com.github.bumptech.glide:glide:3.7.0
 ```
 
 License

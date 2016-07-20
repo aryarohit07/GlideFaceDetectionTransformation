@@ -11,18 +11,19 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
-import com.rohitarya.glide.facedetection.transformation.core.FaceUtils;
+import com.rohitarya.glide.facedetection.transformation.core.GlideFaceDetector;
 
 /**
  * Created by Rohit Arya (http://rohitarya.com) on 18/7/16.
  */
 public class CenterFaceCrop extends BitmapTransformation {
 
-    private Context context;
+    public CenterFaceCrop(){
+        this(GlideFaceDetector.getContext());
+    }
 
-    public CenterFaceCrop(Context context) {
+    private CenterFaceCrop(Context context) {
         super(context);
-        this.context = context;
     }
 
     /**
@@ -121,7 +122,7 @@ public class CenterFaceCrop extends BitmapTransformation {
     }
 
     private boolean detectFace(Bitmap bitmap, int[] faceRect) {
-        FaceDetector faceDetector = FaceUtils.getFaceDetector(context);
+        FaceDetector faceDetector = GlideFaceDetector.getFaceDetector();
         if(!faceDetector.isOperational()){
             return false;
         }
