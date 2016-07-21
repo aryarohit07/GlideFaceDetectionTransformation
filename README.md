@@ -53,7 +53,7 @@ Glide.with(yourFragment)
 
 STEP 4:
 
-Release the detector when you are done with the detector. (May be in `onDestory()` method)
+Release the detector when you are done (May be in `onDestory()` method)
 
 ```java
 GlideFaceDetector.releaseDetector();
