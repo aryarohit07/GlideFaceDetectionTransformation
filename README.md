@@ -10,8 +10,8 @@ Are you using **Picasso**? [PicassoFaceDetectionTransformation](https://github.c
 ### How to use it?
 
 STEP 1:
-Gradle
--------
+
+Grab via Gradle
 
 ```
 repositories {
@@ -20,6 +20,14 @@ repositories {
 dependencies {
     compile 'com.github.aryarohit07:glide-facedetection-transformation:0.2'
 }
+```
+Or via Maven
+```
+<dependency>
+  <groupId>com.github.aryarohit07</groupId>
+  <artifactId>glide-facedetection-transformation</artifactId>
+  <version>0.2</version>
+</dependency>
 ```
 
 STEP 2:
