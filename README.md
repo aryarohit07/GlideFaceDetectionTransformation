@@ -32,7 +32,7 @@ Or via Maven
 
 STEP 2:
 
-Initialize the detector
+Initialize the detector (May be in `onCreate()` method)
 
 ```java
 GlideFaceDetector.initialize(context);
@@ -53,7 +53,7 @@ Glide.with(yourFragment)
 
 STEP 4:
 
-Release the detector when you are done with the detector. (May be in ```onDestory()``` method)
+Release the detector when you are done with the detector. (May be in `onDestory()` method)
 
 ```java
 GlideFaceDetector.releaseDetector();
