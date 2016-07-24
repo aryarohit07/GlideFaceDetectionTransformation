@@ -53,7 +53,7 @@ Glide.with(yourFragment)
 
 STEP 4:
 
-Release the detector when you are done (May be in `onDestory()` method)
+The face detector uses native resources in order to do detection. For this reason, it is necessary to release the detector instance once it is no longer needed (May be in `onDestory()` method)
 
 ```java
 GlideFaceDetector.releaseDetector();
@@ -72,7 +72,7 @@ com.github.bumptech.glide:glide:3.7.0
 TODO
 ----
 * Support for multiple faces.
-* Making generic for any point.
+* Making it generic for any point.
 
 
 License
