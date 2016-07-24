@@ -40,23 +40,24 @@ public class CenterFaceCrop extends BitmapTransformation {
     @Override
     protected Bitmap transform(BitmapPool bitmapPool, Bitmap original, int width, int height) {
 
-        Bitmap.Config config =
-                original.getConfig() != null ? original.getConfig() : Bitmap.Config.ARGB_8888;
-        Bitmap result = bitmapPool.get(width, height, config);
-        if (result == null) {
-            result = Bitmap.createBitmap(width, height, config);
-        }
-
         float scaleX = (float) width / original.getWidth();
         float scaleY = (float) height / original.getHeight();
-        float scale = Math.max(scaleX, scaleY);
-
-        float left = 0f;
-        float top = 0f;
-
-        float scaledWidth = width, scaledHeight = height;
 
         if(scaleX!=scaleY) {
+
+            Bitmap.Config config =
+                    original.getConfig() != null ? original.getConfig() : Bitmap.Config.ARGB_8888;
+            Bitmap result = bitmapPool.get(width, height, config);
+            if (result == null) {
+                result = Bitmap.createBitmap(width, height, config);
+            }
+
+            float scale = Math.max(scaleX, scaleY);
+
+            float left = 0f;
+            float top = 0f;
+
+            float scaledWidth = width, scaledHeight = height;
 
             int[] faceRect = new int[4];
             boolean faceDetected = detectFace(original, faceRect);
@@ -87,13 +88,16 @@ public class CenterFaceCrop extends BitmapTransformation {
                     top = (height - scaledHeight) / 2; // center crop
                 }
             }
+
+            RectF targetRect = new RectF(left, top, left + scaledWidth, top + scaledHeight);
+            Canvas canvas = new Canvas(result);
+            canvas.drawBitmap(original, null, targetRect, null);
+            //No need to recycle() original Bitmap as Glide will take care of returning our original Bitmap to the BitmapPool
+            return result;
+
+        }else {
+            return original;
         }
-
-        RectF targetRect = new RectF(left, top, left + scaledWidth, top + scaledHeight);
-        Canvas canvas = new Canvas(result);
-        canvas.drawBitmap(original, null, targetRect, null);
-
-        return result;
     }
 
     private float getTopPoint(int height, float scaledHeight, float faceCenterY) {

@@ -1,3 +1,9 @@
+Version 0.2.1 *(24-07-2016)*
+--------------------------
+
+Memory improvement when bitmap scaling not required.
+
+
 Version 0.2 *(20-07-2016)*
 --------------------------
 

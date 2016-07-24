@@ -18,7 +18,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'com.github.aryarohit07:glide-facedetection-transformation:0.2'
+    compile 'com.github.aryarohit07:glide-facedetection-transformation:0.2.1'
 }
 ```
 Or via Maven
@@ -26,7 +26,7 @@ Or via Maven
 <dependency>
   <groupId>com.github.aryarohit07</groupId>
   <artifactId>glide-facedetection-transformation</artifactId>
-  <version>0.2</version>
+  <version>0.2.1</version>
 </dependency>
 ```
 
