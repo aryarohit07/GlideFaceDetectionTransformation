@@ -105,6 +105,7 @@ com.google.android.gms:play-services-vision:9.2.1
 com.github.bumptech.glide:glide:3.7.0
 ```
 
+**If you liked it, please Star it.**
 
 TODO
 ----
