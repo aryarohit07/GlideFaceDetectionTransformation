@@ -1,6 +1,9 @@
 
 # Glide face detection transformation
 
+[ ![Download](https://api.bintray.com/packages/aryarohit07/android/glide-facedetection-transformation/images/download.svg) ](https://bintray.com/aryarohit07/android/glide-facedetection-transformation/_latestVersion)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-GlideFaceDetectionTransformation-blue.svg?style=flat)](http://android-arsenal.com/details/1/4018)
+
 ### An Android image transformation library providing cropping above Face Detection for [Glide](https://github.com/bumptech/glide)
 
 Are you using **Picasso**? [PicassoFaceDetectionTransformation](https://github.com/aryarohit07/PicassoFaceDetectionTransformation).
