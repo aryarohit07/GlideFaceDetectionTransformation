@@ -13,23 +13,26 @@ public class GlideFaceDetector {
     private static Context mContext;
 
     public static Context getContext() {
-        if(mContext==null) {
+        if (mContext == null) {
             throw new RuntimeException("Initialize GlideFaceDetector by calling GlideFaceDetector.initialize(context).");
         }
         return mContext;
     }
 
     public static void initialize(Context context) {
-        mContext = context;
+        if (context == null) {
+            throw new IllegalArgumentException("Context must not be null.");
+        }
+        mContext = context.getApplicationContext();
         initDetector();
     }
 
     private static void initDetector() {
-        if(null==faceDetector) {
+        if (faceDetector == null) {
             synchronized ((GlideFaceDetector.class)) {
-                if(null==faceDetector) {
+                if (faceDetector == null) {
                     faceDetector = new
-                            FaceDetector.Builder(mContext)
+                            FaceDetector.Builder(getContext())
                             .setTrackingEnabled(false)
                             .build();
                 }
@@ -38,17 +41,15 @@ public class GlideFaceDetector {
     }
 
     public static FaceDetector getFaceDetector() {
-        if(mContext==null) {
-            throw new RuntimeException("Initialize GlideFaceDetector by calling GlideFaceDetector.initialize(context).");
-        }
         initDetector();
         return faceDetector;
     }
 
     public static void releaseDetector() {
-        if(faceDetector!=null) {
+        if (faceDetector != null) {
             faceDetector.release();
             faceDetector = null;
         }
+        mContext = null;
     }
 }
