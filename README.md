@@ -58,7 +58,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'com.github.aryarohit07:glide-facedetection-transformation:0.2.1'
+    compile 'com.github.aryarohit07:glide-facedetection-transformation:0.3.0'
 }
 ```
 Or via Maven
@@ -66,7 +66,7 @@ Or via Maven
 <dependency>
   <groupId>com.github.aryarohit07</groupId>
   <artifactId>glide-facedetection-transformation</artifactId>
-  <version>0.2.1</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 
@@ -81,12 +81,11 @@ GlideFaceDetector.initialize(context);
 STEP 3:
 
 Set glide transform
--------
 
 ```java
 Glide.with(yourFragment)
     .load(yourUrl)
-    .transform(new CenterFaceCrop())
+    .transform(new FaceCenterCrop())
     .into(yourView);
 ```
 
@@ -104,16 +103,29 @@ GlideFaceDetector.releaseDetector();
 Library dependencies:
 ------
 ```java
-com.google.android.gms:play-services-vision:9.2.1
+com.google.android.gms:play-services-vision:9.4.0
 com.github.bumptech.glide:glide:3.7.0
 ```
 
+
 **If you liked it, please Star it.**
+
 
 TODO
 ----
-* Support for multiple faces.
 * Making it generic for any point.
+
+**Performance:**
+Time taken to detect faces in the original image.
+
+
+| width | height | time taken(ms) |
+|-------|--------|----------------|
+|  640  |  360   |  60-150        |
+|  900  |  600   |  100-200       |
+|  1280 |  720   |  250-350       |
+|  1920 |  1080  |  350-400       |
+|  2048 |  1536  |  500-550       |
 
 
 License
