@@ -8,6 +8,8 @@
 
 Are you using **Picasso**? [PicassoFaceDetectionTransformation](https://github.com/aryarohit07/PicassoFaceDetectionTransformation).
 
+Are you using **Fresco**? [FrescoFaceDetectionProcessor](https://github.com/aryarohit07/FrescoFaceDetectionProcessor).
+
 Results
 ------
 
