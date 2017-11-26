@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
@@ -13,6 +14,8 @@ import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
 import com.rohitarya.glide.facedetection.transformation.core.GlideFaceDetector;
+
+import java.security.MessageDigest;
 
 /*
  * Copyright (C) 2016 Rohit Arya
@@ -31,13 +34,20 @@ import com.rohitarya.glide.facedetection.transformation.core.GlideFaceDetector;
  */
 
 public class FaceCenterCrop extends BitmapTransformation {
+    private static final int VERSION = 1;
+    private static final String ID = "com.rohitarya.glide.facedetection.transformation.FaceCenterCrop." + VERSION;
+    private static final byte[] ID_BYTES = ID.getBytes(CHARSET);
 
     public FaceCenterCrop() {
-        this(GlideFaceDetector.getContext());
+        // Intentionally empty.
     }
 
-    private FaceCenterCrop(Context context) {
-        super(context);
+    /**
+     * @deprecated Use {@link #FaceCenterCrop()}
+     */
+    @Deprecated
+    public FaceCenterCrop(Context context){
+        this();
     }
 
     /**
@@ -51,7 +61,7 @@ public class FaceCenterCrop extends BitmapTransformation {
      * @return a transformed bitmap with face being in center.
      */
     @Override
-    protected Bitmap transform(BitmapPool bitmapPool, Bitmap original, int width, int height) {
+    protected Bitmap transform(@NonNull BitmapPool bitmapPool, @NonNull Bitmap original, int width, int height) {
 
         float scaleX = (float) width / original.getWidth();
         float scaleY = (float) height / original.getHeight();
@@ -61,9 +71,6 @@ public class FaceCenterCrop extends BitmapTransformation {
             Bitmap.Config config =
                     original.getConfig() != null ? original.getConfig() : Bitmap.Config.ARGB_8888;
             Bitmap result = bitmapPool.get(width, height, config);
-            if (result == null) {
-                result = Bitmap.createBitmap(width, height, config);
-            }
 
             float scale = Math.max(scaleX, scaleY);
 
@@ -166,7 +173,17 @@ public class FaceCenterCrop extends BitmapTransformation {
     }
 
     @Override
-    public String getId() {
-        return FaceCenterCrop.class.getCanonicalName();
+    public int hashCode() {
+        return ID.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof FaceCenterCrop;
+    }
+
+    @Override
+    public void updateDiskCacheKey(MessageDigest messageDigest) {
+        messageDigest.update(ID_BYTES);
     }
 }
